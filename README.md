@@ -2,7 +2,6 @@
 
 ### Para propositos de aprendizaje.
 
----
 
 Instalamos las gemas:
 ```
