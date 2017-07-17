@@ -31,18 +31,18 @@ Asegurate de permitir solo los dominios que tendran acceso al API.
 # gemfile
 gem 'rack-cors', :require => 'rack/cors'
 
-# config/application.rb
-module YourApp
-  class Application < Rails::Application
-    config.middleware.use Rack::Cors do
-      allow do
-        origins '*'
-        resource '*',
-          :headers => :any,
-          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          :methods => [:get, :post, :options, :delete, :put]
-      end
-    end
+# config/initializers/cors.rb
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+    resource '*',
+    :headers => :any,
+    :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+    :methods => [:get, :post, :options, :delete, :put]
   end
 end
 ~~~
+
+Ejemplo de request para registrarse (Postman) :
+![Sign Up](https://github.com/learningruby/devise_token_auth_demo/blob/master/public/images/sign_up.png?raw=true)
+
