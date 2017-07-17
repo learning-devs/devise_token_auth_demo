@@ -1,24 +1,48 @@
-# README
+# Devise Token Auth Demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Para propositos de aprendizaje.
 
-Things you may want to cover:
 
-* Ruby version
+Instalamos las gemas:
+~~~ruby
+gem 'devise_token_auth'
+gem 'omniauth'
+~~~
 
-* System dependencies
+Creamos la base de datos:
+~~~ruby
+rails db:create
+~~~
 
-* Configuration
+Corremos el comando:
+~~~ruby
+rails g devise_token_auth:install User auth
+~~~
 
-* Database creation
+Migramos:
+~~~ruby
+rails db:migrate
+~~~
 
-* Database initialization
+Si el API y el cliente van a estar en diferentes dominios, debes configurar tu aplicación para que acepte  cross origin requests:
 
-* How to run the test suite
+Asegurate de permitir solo los dominios que tendran acceso al API.
+~~~ruby
+# gemfile
+gem 'rack-cors', :require => 'rack/cors'
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# config/application.rb
+module YourApp
+  class Application < Rails::Application
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
+  end
+end
+~~~
