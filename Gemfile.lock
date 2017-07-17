@@ -56,6 +56,7 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    hashie (3.5.6)
     i18n (0.8.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -73,6 +74,9 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    omniauth (1.6.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
     pg (0.21.0)
     puma (3.9.1)
@@ -138,6 +142,7 @@ DEPENDENCIES
   byebug
   devise_token_auth
   listen (~> 3.0.5)
+  omniauth
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.4)
