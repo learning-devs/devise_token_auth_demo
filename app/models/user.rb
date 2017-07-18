@@ -18,13 +18,18 @@
 
 class User < ActiveRecord::Base
 
-  devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable
+	devise :database_authenticatable, :registerable,
+					:recoverable, :rememberable, :trackable, :validatable
 
-  include DeviseTokenAuth::Concerns::User
+	include DeviseTokenAuth::Concerns::User
 
-  has_many :products
+	has_many :products
 
-  validates :password_confirmation, presence: true, on: :create
-  validates :name, presence: true
+	validates :password_confirmation, presence: true, on: :create
+	validates :name, presence: true
+
+
+	def self.admin?
+		return self.role.eql? "admin"
+	end
 end
