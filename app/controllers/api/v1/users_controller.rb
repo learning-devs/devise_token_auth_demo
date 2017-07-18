@@ -1,11 +1,9 @@
 class Api::V1::UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
-    if user_signed_in?
-      render json: current_user
-    else
-      render json: { errors: 'No hay un usuario autenticado.' }
-    end
+    render json: current_user
   end
 
   private

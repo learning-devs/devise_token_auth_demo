@@ -1,4 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_product, only: [:show, :update, :destroy]
 
   def index
@@ -11,7 +13,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.build(product_params)
+    @product = current_user.products.new(product_params)
     if @product.save
       render json: @product, status: :created, location: @product
     else
