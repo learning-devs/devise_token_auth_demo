@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   include DeviseTokenAuth::Concerns::User
 
+  has_many :products
+
   validates :password_confirmation, presence: true, on: :create
   validates :name, presence: true
 end
