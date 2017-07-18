@@ -54,7 +54,7 @@ config.change_headers_on_each_request = false
 
 Ejemplo de request para registrarse:
 
-![Sign Up](https://github.com/learningruby/devise_token_auth_demo/blob/master/public/images/sign_up2.png?raw=true)
+![Sign Up](https://github.com/learningruby/devise_token_auth_demo/blob/master/public/images/sign_up.png?raw=true)
 
 Ejemplo de request para iniciar sesión:
 
