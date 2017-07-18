@@ -43,6 +43,13 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 end
 ~~~
 
+Para que no se regenere el token en cada request:
+~~~ruby
+# config/initializers/devise_token_auth.rb
+config.change_headers_on_each_request = false
+~~~
+
+
 Ejemplo de request para registrarse (Postman) :
 ![Sign Up](https://github.com/learningruby/devise_token_auth_demo/blob/master/public/images/sign_up.png?raw=true)
 
