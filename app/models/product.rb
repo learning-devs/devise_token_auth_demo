@@ -13,6 +13,7 @@
 
 class Product < ApplicationRecord
   belongs_to :user
+  paginates_per 3
 
   validates :name, :description, :price, :user_id, presence: true
   validates :price, numericality: true

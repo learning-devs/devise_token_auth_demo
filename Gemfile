@@ -26,6 +26,7 @@ gem 'cancancan', '~> 2.0'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'annotate'
+gem 'kaminari'
 gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do

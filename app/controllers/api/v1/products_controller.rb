@@ -4,8 +4,8 @@ class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
 
   def index
-    @products = Product.all
-    render json: @products
+    @products = Product.order(:created_at).page(params[:page])
+    render json: @products, meta: pagination_meta(@products)
   end
 
   def show
