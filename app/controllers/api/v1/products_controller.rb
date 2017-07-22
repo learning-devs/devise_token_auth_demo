@@ -13,11 +13,11 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.new(product_params)
+    @product = current_api_v1_user.products.new(product_params)
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: @product, status: :created
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render json: { errors: @product.errors }, status: :unprocessable_entity
     end
   end
 
