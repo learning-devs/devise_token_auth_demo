@@ -23,7 +23,7 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors'
 
 gem 'cancancan', '~> 2.0'
-gem 'devise_token_auth'
+gem 'devise_token_auth', :git => 'https://github.com/emmanuelsw/devise_token_auth'
 gem 'omniauth'
 gem 'annotate'
 gem 'kaminari'
