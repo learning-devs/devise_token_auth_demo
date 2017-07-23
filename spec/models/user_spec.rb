@@ -32,5 +32,14 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it{should validate_presence_of :email}
+	it{should validate_presence_of :name}
+
+	describe "#validate_user_register" do
+		it "should not registration whitout email" do
+			user = User.new(password:"1234",password_confirmation:"1234",name:"miguel")
+			expect(user.valid?).to be_falsy #=>false/nil
+		end
+	end
+
 end
