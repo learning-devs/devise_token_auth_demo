@@ -22,21 +22,6 @@ ActiveRecord::Schema.define(version: 20170722025051) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "sqlite_stat1", id: false, force: :cascade do |t|
-    t. "tbl"
-    t. "idx"
-    t. "stat"
-  end
-
-  create_table "sqlite_stat4", id: false, force: :cascade do |t|
-    t. "tbl"
-    t. "idx"
-    t. "neq"
-    t. "nlt"
-    t. "ndlt"
-    t. "sample"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
     t.string   "uid",                    default: "",      null: false

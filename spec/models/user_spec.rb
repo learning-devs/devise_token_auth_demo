@@ -29,20 +29,8 @@
 #  allow_password_change  :boolean          default(FALSE)
 #
 
-class User < ActiveRecord::Base
+require 'rails_helper'
 
-	devise :database_authenticatable, :registerable,
-					:recoverable, :rememberable, :trackable, :validatable
-
-	include DeviseTokenAuth::Concerns::User
-
-	has_many :products
-
-	validates :password_confirmation, presence: true, on: :create
-	validates :name, presence: true
-
-	def self.admin?
-		return self.role.eql? "admin"
-	end
-
+RSpec.describe User, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
