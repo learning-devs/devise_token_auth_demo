@@ -5,7 +5,7 @@ class Api::V1::ProductsController < ApplicationController
 
 
   def index
-    @products = Product.order(:created_at).page(params[:page]).per(params[:size])
+    @products = Product.filter_page(params[:page],params[:size])
     render json: @products, meta: pagination_meta(@products)
   end
 
@@ -33,6 +33,11 @@ class Api::V1::ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+  end
+
+  def search
+    @products = Product.search(params[:page],params[:size],params[:filter])
+    render json: @products, meta: pagination_meta(@products)
   end
 
   private
