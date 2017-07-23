@@ -3,8 +3,9 @@ class Api::V1::ProductsController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_product, only: [:show, :update, :destroy]
 
+
   def index
-    @products = Product.order(:created_at).page(params[:page])
+    @products = Product.order(:created_at).page(params[:page]).per(params[:size])
     render json: @products, meta: pagination_meta(@products)
   end
 
