@@ -67,3 +67,24 @@ Respuesta de inicio de sesion:
 Headers devueltos en el inicio de sesión:
 
 ![Sign In Headers](https://github.com/learningruby/devise_token_auth_demo/blob/master/public/images/sign_in_headers.png?raw=true)
+
+
+### Cambio de contraseña
+
+Para que requiera la contraseña actual
+~~~ruby
+# config/initializers/devise_token_auth.rb
+config.check_current_password_before_update = :password
+~~~
+
+### Recuperación de contraseña
+
+Se realizo un fork del repositorio de [devise token auth](https://github.com/lynndylanhurley/devise_token_auth), el cambio quedo en el siguiente [repositorio con el fork](https://github.com/emmanuelsw/devise_token_auth).
+
+Se tuvo la necesidad de realizar esto porque en la versión del repositorio original si se requiere la contraseña actual para cambiar la contraseña no es posible la recuperación sin este campo.
+
+Se agrego el campo  **allow_password_change** al modelo de usuarios como un campo **boolean** y por defecto **false**
+
+
+
+
