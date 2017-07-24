@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
 
 	describe "#validate_user_register" do
 		it "should not registration whitout email" do
-			user = User.new(password:"1234",password_confirmation:"1234",name:"miguel")
+			user = User.create(password:"1234",password_confirmation:"1234",name:"miguel")
 			expect(user.valid?).to be_falsy #=>false/nil
 		end
 	end

@@ -29,3 +29,18 @@
 #  allow_password_change  :boolean          default(FALSE)
 #
 
+FactoryGirl.define do
+	factory :user do
+		trait :create_user_admin do
+			user do
+				User.find_by(name: "Administrador") || 
+				FactoryGirl.create(:user,
+					name: "Administrador", 
+					email: "admin@hotmail.com",
+					password: "1234",
+					password_confirmation: "1234",
+					role: "admin")
+			end
+		end
+	end
+end
