@@ -13,13 +13,6 @@
 
 FactoryGirl.define do
 	factory :product do
-		transient  do
-			user_id 1
-		end
-	
-		create_user_admin do
-			User.find_by(name: "Administrador") || 
-			FactoryGirl.create(:user,:create_user_admin)
-		end
+
 	end
 end

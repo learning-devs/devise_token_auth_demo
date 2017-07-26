@@ -36,7 +36,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'shoulda-matchers'						#Metodos de ayuda validaciones rails
 	gem 'rspec-rails', '~> 3.4', '>= 3.4.2' 	#Framework pruebas
-	gem 'factory_girl', '~> 4.0'					#Permite crear objetos a base de datos para pruebas
+	gem 'factory_girl_rails', '~> 4.0'				#Permite crear objetos a base de datos para pruebas
 end
 
 group :development do

@@ -29,17 +29,19 @@ RSpec.describe Product, type: :model do
 
 	describe "#validate_product_filter" do
 		it "should valdidate products name containt 'Gas'" do
-			FactoryGirl.create(:product, name: "Gaseosa",description: "Producto Liquido", price: 2000,user_id: :create_user_admin)
-			FactoryGirl.create(:product, name: "Papitas",description: "Producto comestible", price: 2000,user_id: :create_user_admin)
-			FactoryGirl.create(:product, name: "Leche",description: "Producto Lacteo", price: 2000,user_id: :create_user_admin)
-			expected(Product.filter_name("Gas").count == 1).to be_truthy #(not nil or false)
+			user = FactoryGirl.create(:user)
+			FactoryGirl.create(:product, name: "Gaseosa",description: "Producto Liquido", price: 2000,user_id: user.id)
+			FactoryGirl.create(:product, name: "Papitas",description: "Producto comestible", price: 2000,user_id: user.id)
+			FactoryGirl.create(:product, name: "Leche",description: "Producto Lacteo", price: 2000,user_id: user.id)
+			expect(Product.filter_name("Gas").count == 1).to be_truthy #(not nil or false)
 		end
 
 		it "should valdidate products description containt 'Liqu'" do
-			FactoryGirl.create(:product, name: "Gaseosa",description: "Producto Liquido", price: 2000,user_id: :create_user_admin)
-			FactoryGirl.create(:product, name: "Papitas",description: "Producto comestible", price: 2000,user_id: :create_user_admin)
-			FactoryGirl.create(:product, name: "Leche",description: "Producto Lacteo", price: 2000,user_id: :create_user_admin)
-			expected(Product.filter_filter_description("Liqu").count == 1).to be_truthy #(not nil or false)
+			user = FactoryGirl.create(:user)
+			FactoryGirl.create(:product, name: "Gaseosa",description: "Producto Liquido", price: 2000,user_id: user.id)
+			FactoryGirl.create(:product, name: "Papitas",description: "Producto comestible", price: 2000,user_id: user.id)
+			FactoryGirl.create(:product, name: "Leche",description: "Producto Lacteo", price: 2000,user_id: user.id)
+			expect(Product.filter_description("Liqu").count == 1).to be_truthy #(not nil or false)
 		end
 	end
 	
