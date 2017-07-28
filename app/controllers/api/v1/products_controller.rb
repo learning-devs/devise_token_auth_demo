@@ -3,9 +3,10 @@ class Api::V1::ProductsController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_product, only: [:show, :update, :destroy]
 
-
+  
   def index
     @products = Product.filter_page(params[:page],params[:size])
+    authorize @products
     render json: @products, meta: pagination_meta(@products)
   end
 
@@ -15,6 +16,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def create
     @product = current_api_v1_user.products.new(product_params)
+    authorize @product
     if @product.save
       render json: @product, status: :created
     else
@@ -43,6 +45,7 @@ class Api::V1::ProductsController < ApplicationController
   private
     def set_product
       @product = Product.find(params[:id])
+      authorize @product
     end
 
     def product_params

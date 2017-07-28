@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true, on: :create
 	validates :name, presence: true
 
-	def self.admin?
+	def admin?
 		return self.role.eql? "admin"
 	end
 
