@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProductPolicy do
-
+=begin
   let(:user) { User.new }
 
   subject { described_class }
@@ -25,4 +25,5 @@ RSpec.describe ProductPolicy do
   permissions :destroy? do
     pending "add some examples to (or delete) #{__FILE__}"
   end
+=end
 end
