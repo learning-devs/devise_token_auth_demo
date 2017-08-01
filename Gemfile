@@ -38,6 +38,7 @@ group :development, :test do
 	gem 'rspec-rails', '~> 3.4', '>= 3.4.2' 	#Framework pruebas
 	gem 'factory_girl_rails', '~> 4.0'				#Permite crear objetos a base de datos para pruebas
 	gem 'faker'
+  	gem 'rspec_api_documentation'				 # Automatic generate API documentation based on comments in RSpec
 end
 
 group :development do
