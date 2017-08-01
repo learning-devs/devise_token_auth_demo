@@ -14,7 +14,7 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-
+	
 	describe "#validate_product_field_required" do
 		it{should validate_presence_of :name}
 		it{should validate_presence_of :user_id}

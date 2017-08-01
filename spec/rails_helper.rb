@@ -6,6 +6,8 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
+require 'devise'
+
 #Nuestro helpers
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -43,6 +45,11 @@ RSpec.configure do |config|
 
   config.include ApiHelper, type: :api
   config.include Requests::JsonHelpers, type: :api
+
+
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+
+
   
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
