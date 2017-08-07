@@ -10,28 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805174811) do
+ActiveRecord::Schema.define(version: 20170806221900) do
 
   create_table "pay_pal_payments", force: :cascade do |t|
-    t.string   "email"
-    t.string   "ip"
-    t.string   "status"
-    t.decimal  "fee",        precision: 6, scale: 2
+    t.string   "payer_email"
+    t.string   "recipient_name"
+    t.string   "payer_id"
+    t.string   "state"
+    t.string   "currency"
     t.string   "paypal_id"
-    t.decimal  "total",      precision: 8, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-  end
-
-  create_table "payment_pay_pals", force: :cascade do |t|
-    t.string   "email"
-    t.string   "ip"
-    t.string   "status"
-    t.decimal  "fee",        precision: 6, scale: 2
-    t.string   "paypal_id"
-    t.decimal  "total",      precision: 8, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.decimal  "amount",         precision: 8, scale: 2
+    t.string   "sale_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "products", force: :cascade do |t|
