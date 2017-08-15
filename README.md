@@ -86,5 +86,56 @@ Se tuvo la necesidad de realizar esto porque en la versión del repositorio orig
 Se agrego el campo  **allow_password_change** al modelo de usuarios como un campo **boolean** y por defecto **false**
 
 
+### Action Cable
+
+Por defecto action cable viene configurado para solo recibir peticiones del mismo servidor, para cambiar esto se hace lo siguiente en cada ambiente que se ejecute, en este caso se mostrara en ambiente de desarrollo.
+
+~~~ruby
+# config/environments/development.rb
+config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+~~~
+
+Se creo la funcion de action cable cuando se crea un nuevo producto, para esto debemos crear el canal de escucha.
+
+~~~ruby
+rails g channel product
+~~~
+
+En el metodo **subscribed**, le decimos que se conectada a un canal llamado **product**
+
+~~~ruby
+# /app/channels/product_channel.rb
+class ProductChannel < ApplicationCable::Channel
+	def subscribed
+		stream_from "product"
+	end
+
+	def unsubscribed
+		
+	end
+end
+~~~
+
+Ya con esto tenemos un canal de escucha, solo falta crear una accion que ejecute el canal para enviar a todos los usuarios que se encuentren suscrito a el informacion, para esto vamos al modelo de producto y creamos un metodo para que se ejecute luego de que un producto es creado.
+
+~~~ruby
+# /app/models/product.rb
+class Product < ApplicationRecord
+	.
+	.
+	.
+	after_create :send_to_action_cable
+
+	.
+	.
+	.
+	private
+		def send_to_action_cable
+			data = {message: self,action:"new product"}
+			ActionCable.server.broadcast "product",data
+		end
+end
+~~~
+
 
 
